@@ -14,6 +14,7 @@
 	<!-- <h:outputScript library="js" name="Catalog.js"/> -->
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+		
 	</script>
 	<title><ui:insert name="title">Using Template Header</ui:insert></title>
 
@@ -37,6 +38,9 @@
 
 
 	<ui:insert name="footer">
+		<div>
+			<ui:include src="../WPPartsDefault/defaultFooter.xhtml" />
+		</div>
 	</ui:insert>
 
 
