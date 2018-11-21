@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	>
+
+<!--  -->
+
+
+<composite:interface>
+	<composite:attribute name="event" required="true"></composite:attribute>
+	<composite:attribute name="style" required="true"></composite:attribute>
+</composite:interface>
+
+<composite:implementation>
+	<!-- 			<td class="#{compositeComponent.attrs.style}"> -->
+	<td class="colorTest">
+		<rich:panel header="#{cc.attrs.event.eventName}">
+			<div style="border: 0px solid green; width: 200px;">
+				<h:outputText style="width: 200px;"
+					value="#{cc.attrs.event.eventDescription}" />
+			</div>
+
+			<ul>
+				<ui:repeat var="myEventTopic" value="#{cc.attrs.event.eventTopics}">
+					<li>#{myEventTopic.eventTopicTitle}</li>
+				</ui:repeat>
+			</ul>
+
+			<rich:collapsiblePanel header="School Info" expanded="false"
+				switchType="ajax">
+
+				<div style="border: 0px solid green; width: 200px;">
+					<h:outputText value="Date: " />
+					<h:outputText style="width: 200px;" value="#{cc.attrs.event.date}" />
+				</div>
+				<div style="border: 0px solid green; width: 200px;">
+					<h:outputText value="time: " />
+					<h:outputText style="width: 200px;" value="#{cc.attrs.event.time}" />
+				</div>
+				<div style="border: 0px solid green; width: 200px;">
+					<h:outputText value="institution: " />
+					<h:outputText style="width: 200px;"
+						value="#{cc.attrs.event.institution}" />
+				</div>
+
+
+			</rich:collapsiblePanel>
+
+
+		</rich:panel>
+	</td>
+</composite:implementation>
+
+</html>
