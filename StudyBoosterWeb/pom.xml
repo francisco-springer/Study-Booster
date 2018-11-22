@@ -19,10 +19,19 @@
 
 
 	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-jar-plugin.version>2.6</maven-jar-plugin.version>
+
+		<local.glassfish.dir>/home/delbin/MyJavaSowftware/glassfish5</local.glassfish.dir>
+		<local.glassfish.home>${local.glassfish.dir}glassfish</local.glassfish.home>
+		<local.glassfish.user>admin</local.glassfish.user>
+		<local.glassfish.domain>domain1</local.glassfish.domain>
+		<local.glassfish.adminPort>8049</local.glassfish.adminPort>
+		<local.glassfish.httpPort>8484</local.glassfish.httpPort>
+		<local.glassfish.passfile>
+			${local.glassfish.home}\\domains\\domain1\\config\\domain-passwords
+		</local.glassfish.passfile>
+
 	</properties>
 
 
@@ -46,7 +55,6 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
 		</dependency>
 
 		<dependency>
@@ -63,16 +71,18 @@
 		</dependency>
 		<dependency>
 			<artifactId>hamcrest-all</artifactId>
-			<groupId>org.hamcrest</groupId>
-			<!-- <version>1.3</version> -->
+			<groupId>org.hamcrest</groupId>			
 			<scope>test</scope>
 			<type>jar</type>
 		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>javax</groupId> -->
+		<!-- <artifactId>javaee-web-api</artifactId> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>javax</groupId>
-			<artifactId>javaee-web-api</artifactId>
-			<!-- <version>8.0</version> -->
-			<!-- <scope>provided</scope> -->
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.richfaces</groupId>
@@ -89,12 +99,11 @@
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
-			<version>2.3.2</version>
 		</dependency>
 
 		<dependency>
 			<groupId>StudyBooster.com</groupId>
-			<artifactId>StudyBoosterEJB</artifactId>			
+			<artifactId>StudyBoosterEJB</artifactId>
 		</dependency>
 
 	</dependencies>
@@ -147,6 +156,51 @@
 				<artifactId>maven-deploy-plugin</artifactId>
 				<!-- <version>2.8.2</version> -->
 			</plugin><!-- <plugin> --><!-- <groupId>org.glassfish.maven.plugin</groupId> --><!-- <artifactId>maven-glassfish-plugin</artifactId> --><!-- <version>2.1</version> --><!-- <configuration> --><!-- <user>admin</user> --><!-- <adminPassword>adminadmin</adminPassword> --><!-- <glassfishDirectory>/opt/glassfish5</glassfishDirectory> --><!-- </configuration> --><!-- </plugin> -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-dependency-plugin</artifactId> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>copy</id> -->
+			<!-- <phase>package</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>copy-dependencies</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <outputDirectory>${project.build.directory}/lib</outputDirectory> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.glassfish.maven.plugin</groupId> -->
+			<!-- <artifactId>maven-glassfish-plugin</artifactId> -->
+			<!-- <version>2.1</version> -->
+			<!-- <configuration> -->
+			<!-- <glassfishDirectory>${local.glassfish.home}</glassfishDirectory> -->
+			<!-- <user>admin</user> -->
+			<!-- <passwordFile>${local.glassfish.passfile}</passwordFile> -->
+			<!-- <domain> -->
+			<!-- <name>${local.glassfish.domain}</name> -->
+			<!-- <httpPort>${local.glassfish.httpPort}</httpPort> -->
+			<!-- <adminPort>${local.glassfish.adminPort}</adminPort> -->
+			<!-- </domain> -->
+			<!-- <components> -->
+			<!-- <component> -->
+			<!-- <name>${project.artifactId}</name> -->
+			<!-- <artifact>target/${project.build.finalName}.jar</artifact> -->
+			<!-- </component> -->
+			<!-- </components> -->
+			<!-- <debug>true</debug> -->
+			<!-- <terse>false</terse> -->
+			<!-- <echo>true</echo> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
+
+			<!-- <plugin> -->
+			<!-- <artifactId>maven-surefire-plugin</artifactId> -->
+			<!-- </plugin> -->
+
 		</plugins>
 	</build>
 
