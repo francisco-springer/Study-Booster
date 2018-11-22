@@ -92,6 +92,11 @@
 			<version>2.3.2</version>
 		</dependency>
 
+		<dependency>
+			<groupId>StudyBooster.com</groupId>
+			<artifactId>StudyBoosterEJB</artifactId>			
+		</dependency>
+
 	</dependencies>
 
 	<build>
