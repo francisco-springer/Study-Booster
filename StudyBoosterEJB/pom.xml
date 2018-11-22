@@ -6,15 +6,29 @@
 	<packaging>ejb</packaging>
 	<name>StudyBoosterEJB</name>
 	<build>
-		<sourceDirectory>ejbModule</sourceDirectory>
+
+<!-- 		<sourceDirectory>ejbModule</sourceDirectory> -->
+<!-- 		<resources> -->
+<!-- 			<resource> -->
+<!-- 				<directory>ejbModule</directory> -->
+<!-- 				<excludes> -->
+<!-- 					<exclude>**/*.java</exclude> -->
+<!-- 				</excludes> -->
+<!-- 			</resource> -->
+<!-- 		</resources> -->
+
+		<finalName>StudyBoosterEJB</finalName>
+
+		<sourceDirectory>src/main/java</sourceDirectory>
+		
 		<resources>
 			<resource>
-				<directory>ejbModule</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
+				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
