@@ -10,6 +10,9 @@
         <dependent-module archiveName="StudyBoosterEJB-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/StudyBoosterEJB/StudyBoosterEJB">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="StudyBoosterJPA-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/StudyBoosterJPA/StudyBoosterJPA">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="StudyBoosterWeb"/>
         <property name="java-output-path" value="/StudyBoosterWeb/target/classes"/>
     </wb-module>

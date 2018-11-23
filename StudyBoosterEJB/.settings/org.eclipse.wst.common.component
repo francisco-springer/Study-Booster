@@ -2,7 +2,6 @@
     <wb-module deploy-name="StudyBoosterEJB">
         <wb-resource deploy-path="/" source-path="/src/main/resources" tag="defaultRootSource"/>
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/" source-path="/src/test/resources"/>
         <property name="java-output-path" value="/StudyBoosterEJB/target/classes"/>
     </wb-module>
 </project-modules>

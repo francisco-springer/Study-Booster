@@ -1,19 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<groupId>StudyBooster.com</groupId>
+	<artifactId>StudyBoosterJPA</artifactId>
 
-
-	<artifactId>StudyBoosterEJB</artifactId>
 	<packaging>ejb</packaging>
-	<name>StudyBoosterEJB</name>
-	<url>http://maven.apache.org</url>
-
 
 	<parent>
 		<groupId>StudyBooster.com</groupId>
 		<artifactId>StudyBoosterParent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,10 +34,10 @@
 			<scope>test</scope>
 			<type>jar</type>
 		</dependency>
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>javax.mail-api</artifactId>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.mail</groupId> -->
+<!-- 			<artifactId>javax.mail-api</artifactId> -->
+<!-- 		</dependency> -->
 		<!-- <dependency> -->
 		<!-- <groupId>javax</groupId> -->
 		<!-- <artifactId>javaee-web-api</artifactId> -->
@@ -51,17 +47,10 @@
 			<artifactId>javaee-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>StudyBooster.com</groupId>
-			<artifactId>StudyBoosterJPA</artifactId>
-<!-- 			<version>0.0.1-SNAPSHOT</version> -->
-		</dependency>
-
 	</dependencies>
 
 	<build>
-		<finalName>StudyBoosterEJB</finalName>
+		<finalName>StudyBoosterJPA</finalName>
 
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
