@@ -42,10 +42,10 @@
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>javax</groupId> -->
-<!-- 			<artifactId>javaee-web-api</artifactId> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>javax</groupId> -->
+		<!-- <artifactId>javaee-web-api</artifactId> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
@@ -60,6 +60,9 @@
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/test/resources</directory>
 			</resource>
 		</resources>
 		<testSourceDirectory>src/test/java</testSourceDirectory>

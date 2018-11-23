@@ -21,6 +21,7 @@
 	<modules>
 		<module>StudyBoosterWeb</module>
 		<module>StudyBoosterEJB</module>
+		
 	</modules>
 
 
@@ -108,6 +109,20 @@
 				<version>1.2</version>
 			</dependency>
 
+			<dependency>
+				<groupId>StudyBooster.com</groupId>
+				<artifactId>StudyBoosterWeb</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>StudyBooster.com</groupId>
+				<artifactId>StudyBoosterEJB</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+
+			
 		</dependencies>
 	</dependencyManagement>
 	<build>
