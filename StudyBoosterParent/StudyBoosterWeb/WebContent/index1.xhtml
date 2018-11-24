@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich"> -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:p="http://primefaces.org/ui">
+
+
+<!-- 	xmlns:ec="http://java.sun.com/jsf/composite/MyComponents" -->
+
+<h:head>
+	<title>Facelet Title</title>
+</h:head>
+<h:body>
+	<ui:composition template="WPTemplates/TrainTemplate.xhtml">
+
+		<ui:define name="content">
+
+			<h:form id="form" style="width:1024px;">
+				<div class="defaultContentMainDiv">
+
+
+					<h:panelGrid columns="1" style="width:inherit;" layout="block">
+						<a4j:outputPanel id="panel" layout="inline">
+							<a4j:repeat value="#{eventComponent.eventList}" var="myEvent"
+								rows="12" id="repeat">
+								<rich:panel styleClass="panel">
+									<f:facet name="header">
+										<h:panelGroup>
+											<h:outputText value="#{myEvent.eventID }"
+												style="font-weight:bold; font-size: 16px; font-family:Arial,Helvetica,sans-serif; margin-left: 4px" />-
+                                <h:outputText
+												value="#{myEvent.eventName}"
+												style="font-weight:bold; font-size: 16px; font-family:Arial,Helvetica,sans-serif; margin-left: 4px" />
+										</h:panelGroup>
+									</f:facet>
+
+								</rich:panel>
+							</a4j:repeat>
+						</a4j:outputPanel>
+					</h:panelGrid>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
+
