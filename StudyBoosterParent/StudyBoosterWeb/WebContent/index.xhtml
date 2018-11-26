@@ -73,20 +73,30 @@
 										<h:panelGroup>
 											<h:outputText value="#{myEvent.eventID }"
 												style="font-weight:bold; font-size: 16px; font-family:Arial,Helvetica,sans-serif; margin-left: 4px" />-
-                                <h:outputText
+                                			<h:outputText
 												value="#{myEvent.eventName}"
 												style="font-weight:bold; font-size: 16px; font-family:Arial,Helvetica,sans-serif; margin-left: 4px" />
 										</h:panelGroup>
 									</f:facet>
+
+<!-- 										<h:outputText value="#{eventComponent.eventListSize}" -->
+<!-- 												style="font-weight:bold; font-size: 16px;  -->
+<!--  												font-family:Arial,Helvetica,sans-serif; margin-left: 4px" />  -->
+										
 
 									<h:panelGrid columns="1">
 										<h:outputText
 											style="width: auto; color:black; font-weight: bold; font-family:Arial,Helvetica,sans-serif;"
 											value="#{myEvent.eventDescription}" />
 										<ul>
-											<ui:repeat var="myEventTopic" value="#{myEvent.eventTopicList}">
-												<li>#{myEventTopic.eventTopicTitle}</li>
+											<ui:repeat var="myEventTopic" value="#{myEvent.eventTopics}">
+												<li> <span class="tooltip">
+												        #{myEventTopic.eventTopic}
+														<span class="tooltiptext">#{myEventTopic.eventTopicDesc}</span>
+												     </span>
+												</li>
 											</ui:repeat>
+											
 										</ul>
 
 										<rich:collapsiblePanel header="More Info" expanded="false"
@@ -94,15 +104,17 @@
 
 											<div style="border: 0px solid green; width: auto;">
 												<h:outputText value="Date: " />
-												<h:outputText value="#{myEvent.date}" />
+												<h:outputText value="#{myEvent.eventDateTime}" />
 											</div>
+											<hr/>
 											<div style="border: 0px solid green; width: auto;">
-												<h:outputText value="time: " />
-												<h:outputText value="#{myEvent.time}" />
+												<h:outputText value="Number of guess: " />
+												<h:outputText value="#{myEvent.guessTotalCnt}" />
 											</div>
+											<hr/>
 											<div style="border: 0px solid green; width: auto;">
 												<h:outputText value="institution: " />
-												<h:outputText value="#{myEvent.institution}" />
+												<h:outputText value="#{myEvent.institution.institutionName}" />
 											</div>
 
 										</rich:collapsiblePanel>
@@ -110,9 +122,9 @@
 								</rich:panel>
 							</a4j:repeat>
 						</a4j:outputPanel>
-						<a4j:outputPanel layout="block" style="text-align: center;">
-							<rich:dataScroller for="repeat" render="panel" fastStep="3" />
-						</a4j:outputPanel>
+<!-- 						<a4j:outputPanel layout="block" style="text-align: center;"> -->
+<!-- 							<rich:dataScroller for="repeat" render="panel" fastStep="3" /> -->
+<!-- 						</a4j:outputPanel> -->
 					</h:panelGrid>
 				</div>
 			</h:form>

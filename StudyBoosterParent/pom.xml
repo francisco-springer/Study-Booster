@@ -125,11 +125,6 @@
 		</dependencies>
 	</dependencyManagement>
 	<build>
-		<resources>
-			<resource>
-				<directory>Docs</directory>
-			</resource>
-		</resources>
 		<pluginManagement>
 			<plugins>
 				<plugin>

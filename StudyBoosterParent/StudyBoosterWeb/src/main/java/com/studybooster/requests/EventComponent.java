@@ -1,15 +1,18 @@
-package com.StudyBooster.Requests;
+package com.studybooster.requests;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import com.StudyBooster.Biz.Event;
-import com.StudyBooster.Biz.EventEngine;
+
+
+import com.studybooster.current.biz.EventEngine;
+import com.studybooster.entities.EVENT;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import com.studybooster.ejbs.EventEjb;;
 
 //@ManagedBean(name = "eventComponent")
 @Named("eventComponent")
@@ -19,24 +22,30 @@ public class EventComponent implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	private com.StudyBooster.Ejbs.EventEjb eventEjb;
+	private EventEjb eventEjb;
 	
-	@Inject @Named("eventEngine")
-	private  EventEngine eventEngine;
-	
-	private  List<Event> eventList;
+	private  List<EVENT> eventList;
 
+	private int eventListSize;
+	
 	public EventComponent(){}
 	
 	@PostConstruct
 	public void CreateEventComponent()
 	{
-		eventList = eventEngine.generateEventList();	
+		eventList = eventEjb.getEventList();
+		// eventListSize = eventList.size();
 	}
 
-	public List<Event> getEventList() 
+	public List<EVENT> getEventList() 
 	{
 		return eventList;
 	}
 
+	public int getEventListSize()
+	{
+		eventListSize = 10;
+		return eventListSize;
+	}
+	
 }

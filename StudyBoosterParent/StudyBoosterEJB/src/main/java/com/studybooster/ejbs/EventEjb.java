@@ -1,4 +1,4 @@
-package com.StudyBooster.Ejbs;
+package com.studybooster.ejbs;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,8 +6,10 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.studybooster.entities.EVENT;
+
 //import com.StudyBooster.Biz.Event;
-//import com.StudyBooster.Biz.EventEngine;
+//import com.studybooster.current.biz.EventEngine;;;
 
 @Stateless
 public class EventEjb implements Serializable
@@ -15,11 +17,11 @@ public class EventEjb implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private @Named("eventEngine") com.StudyBooster.Biz.EventEngine eventEngine;
+	private @Named("eventEngine") com.studybooster.current.biz.EventEngine eventEngine;
 
 	public EventEjb(){}
 
-	public List<com.StudyBooster.Biz.Event> getEventList()
+	public List<EVENT> getEventList()
 	{
 		return eventEngine.generateEventList();		
 	}

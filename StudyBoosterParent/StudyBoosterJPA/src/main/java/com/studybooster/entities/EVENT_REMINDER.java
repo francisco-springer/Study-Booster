@@ -1,4 +1,4 @@
-package com.StudyBooster.Entities;
+package com.studybooster.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -9,8 +9,8 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="EventReminder.findAll", query="SELECT e FROM EventReminder e")
-public class EventReminder implements Serializable {
+@NamedQuery(name="EventReminder.findAll", query="SELECT e FROM EVENT_REMINDER e")
+public class EVENT_REMINDER implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -19,19 +19,23 @@ public class EventReminder implements Serializable {
 	@Column(name="EventReminderID")
 	private int eventReminderID;
 
-	@Column(name="EventID")
-	private int eventID;
-
 	@Column(name="HoursBeforeEvent")
 	private int hoursBeforeEvent;
 
 	@Column(name="ReminderFrequency")
 	private int reminderFrequency;
 
-	@Column(name="UserEmail")
-	private String userEmail;
+	//bi-directional many-to-one association to Event
+	@ManyToOne
+	@JoinColumn(name="EventID")
+	private EVENT event;
 
-	public EventReminder() {
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="UserEmail")
+	private USER user;
+
+	public EVENT_REMINDER() {
 	}
 
 	public int getEventReminderID() {
@@ -40,14 +44,6 @@ public class EventReminder implements Serializable {
 
 	public void setEventReminderID(int eventReminderID) {
 		this.eventReminderID = eventReminderID;
-	}
-
-	public int getEventID() {
-		return this.eventID;
-	}
-
-	public void setEventID(int eventID) {
-		this.eventID = eventID;
 	}
 
 	public int getHoursBeforeEvent() {
@@ -66,12 +62,20 @@ public class EventReminder implements Serializable {
 		this.reminderFrequency = reminderFrequency;
 	}
 
-	public String getUserEmail() {
-		return this.userEmail;
+	public EVENT getEvent() {
+		return this.event;
 	}
 
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setEvent(EVENT event) {
+		this.event = event;
+	}
+
+	public USER getUser() {
+		return this.user;
+	}
+
+	public void setUser(USER user) {
+		this.user = user;
 	}
 
 }

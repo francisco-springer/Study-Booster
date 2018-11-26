@@ -1,4 +1,4 @@
-package com.StudyBooster.Entities;
+package com.studybooster.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -11,8 +11,8 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="EventPayment.findAll", query="SELECT e FROM EventPayment e")
-public class EventPayment implements Serializable {
+@NamedQuery(name="EventPayment.findAll", query="SELECT e FROM EVENT_PAYMENT e")
+public class EVENT_PAYMENT implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -20,9 +20,6 @@ public class EventPayment implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EVENTPAYMENT_EVENTPAYMENTID_GENERATOR")
 	@Column(name="EventPaymentID")
 	private int eventPaymentID;
-
-	@Column(name="EventReservationID")
-	private int eventReservationID;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="PaymentDate")
@@ -40,10 +37,17 @@ public class EventPayment implements Serializable {
 	@Column(name="TotalPayment")
 	private float totalPayment;
 
-	@Column(name="UserEmail")
-	private String userEmail;
+	//bi-directional many-to-one association to EventReservation
+	@ManyToOne
+	@JoinColumn(name="EventReservationID")
+	private EVENT_RESERVATION eventReservation;
 
-	public EventPayment() {
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="UserEmail")
+	private USER user;
+
+	public EVENT_PAYMENT() {
 	}
 
 	public int getEventPaymentID() {
@@ -52,14 +56,6 @@ public class EventPayment implements Serializable {
 
 	public void setEventPaymentID(int eventPaymentID) {
 		this.eventPaymentID = eventPaymentID;
-	}
-
-	public int getEventReservationID() {
-		return this.eventReservationID;
-	}
-
-	public void setEventReservationID(int eventReservationID) {
-		this.eventReservationID = eventReservationID;
 	}
 
 	public Date getPaymentDate() {
@@ -102,12 +98,20 @@ public class EventPayment implements Serializable {
 		this.totalPayment = totalPayment;
 	}
 
-	public String getUserEmail() {
-		return this.userEmail;
+	public EVENT_RESERVATION getEventReservation() {
+		return this.eventReservation;
 	}
 
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setEventReservation(EVENT_RESERVATION eventReservation) {
+		this.eventReservation = eventReservation;
+	}
+
+	public USER getUser() {
+		return this.user;
+	}
+
+	public void setUser(USER user) {
+		this.user = user;
 	}
 
 }

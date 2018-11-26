@@ -1,7 +1,8 @@
-package com.StudyBooster.Entities;
+package com.studybooster.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -9,13 +10,13 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Location.findAll", query="SELECT l FROM Location l")
-public class Location implements Serializable {
+@NamedQuery(name="Location.findAll", query="SELECT l FROM LOCATION l")
+public class LOCATION implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="LOCATION_LOCATIONID__GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="LOCATION_LOCATIONID__GENERATOR")
+	@SequenceGenerator(name="LOCATION_LOCATIONID_GENERATOR" )
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="LOCATION_LOCATIONID_GENERATOR")
 	@Column(name="LocationID")
 	private int locationID;
 
@@ -37,7 +38,15 @@ public class Location implements Serializable {
 	@Column(name="LocationZip")
 	private int locationZip;
 
-	public Location() {
+	//bi-directional many-to-one association to Institution
+	@OneToMany(mappedBy="location")
+	private List<INSTITUTION> institutions;
+
+	//bi-directional many-to-one association to User
+	@OneToMany(mappedBy="location")
+	private List<USER> users;
+
+	public LOCATION() {
 	}
 
 	public int getLocationID() {
@@ -94,6 +103,50 @@ public class Location implements Serializable {
 
 	public void setLocationZip(int locationZip) {
 		this.locationZip = locationZip;
+	}
+
+	public List<INSTITUTION> getInstitutions() {
+		return this.institutions;
+	}
+
+	public void setInstitutions(List<INSTITUTION> institutions) {
+		this.institutions = institutions;
+	}
+
+	public INSTITUTION addInstitution(INSTITUTION institution) {
+		getInstitutions().add(institution);
+		institution.setLocation(this);
+
+		return institution;
+	}
+
+	public INSTITUTION removeInstitution(INSTITUTION institution) {
+		getInstitutions().remove(institution);
+		institution.setLocation(null);
+
+		return institution;
+	}
+
+	public List<USER> getUsers() {
+		return this.users;
+	}
+
+	public void setUsers(List<USER> users) {
+		this.users = users;
+	}
+
+	public USER addUser(USER user) {
+		getUsers().add(user);
+		user.setLocation(this);
+
+		return user;
+	}
+
+	public USER removeUser(USER user) {
+		getUsers().remove(user);
+		user.setLocation(null);
+
+		return user;
 	}
 
 }
