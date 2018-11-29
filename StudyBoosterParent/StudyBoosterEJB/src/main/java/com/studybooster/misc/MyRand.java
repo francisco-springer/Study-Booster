@@ -1,6 +1,7 @@
 package com.studybooster.misc;
 
 import java.sql.Time;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
@@ -12,18 +13,19 @@ public class MyRand
 
 	String SALTCHARS;
 
+	Random rnd;
+	
 	public MyRand()
 	{
+		rnd = new Random();
 		SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 	}
 
 	public String randomString(int lenght)
 	{
 		StringBuilder eventProperty = new StringBuilder();
-		Random rnd = new Random();
 		while (eventProperty.length() < lenght)
 		{
-			// length of the random string.
 			int index = (int) (rnd.nextFloat() * SALTCHARS.length());
 			eventProperty.append(SALTCHARS.charAt(index));
 		}
@@ -34,10 +36,8 @@ public class MyRand
 	public String randomString(String saltChars, int lenght)
 	{
 		StringBuilder eventProperty = new StringBuilder();
-		Random rnd = new Random();
 		while (eventProperty.length() < lenght)
 		{
-			// length of the random string.
 			int index = (int) (rnd.nextFloat() * saltChars.length());
 			eventProperty.append(saltChars.charAt(index));
 		}
@@ -48,33 +48,30 @@ public class MyRand
 	public int randNum(int min, int max)
 	{
 		return (new Random()).nextInt((max - min) + 1) + min;
-		// return 5;
 	}
 
 	public String randomTime()
 	{
-		final Random random = new Random();
 		final int millisInDay = 24 * 60 * 60 * 1000;
-		Time time = new Time((long) random.nextInt(millisInDay));
+		Time time = new Time((long) rnd.nextInt(millisInDay));
 
 		return time.toString();
 
 	}
 	
-	@SuppressWarnings("static-access")
 	public String randomDate()
 	{
 		GregorianCalendar gc = new GregorianCalendar();
 
 		int year = randBetween(2018, 2020);
 
-		gc.set(gc.YEAR, year);
+		gc.set(Calendar.YEAR, year);
 
-		int dayOfYear = randBetween(1, gc.getActualMaximum(gc.DAY_OF_YEAR));
+		int dayOfYear = randBetween(1, gc.getActualMaximum(Calendar.DAY_OF_YEAR));
 
-		gc.set(gc.DAY_OF_YEAR, dayOfYear);
+		gc.set(Calendar.DAY_OF_YEAR, dayOfYear);
 
-		return (gc.get(gc.MONTH) + 1) + "/" + gc.get(gc.DAY_OF_MONTH) + "/" + gc.get(gc.YEAR);
+		return (gc.get(Calendar.MONTH) + 1) + "/" + gc.get(Calendar.DAY_OF_MONTH) + "/" + gc.get(Calendar.YEAR);
 	}
 
 	public int randBetween(int start, int end)

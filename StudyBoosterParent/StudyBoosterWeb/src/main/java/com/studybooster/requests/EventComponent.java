@@ -33,7 +33,7 @@ public class EventComponent implements Serializable
 	}
 
 	@PostConstruct
-	public void CreateEventComponent()
+	public void createEventComponent()
 	{
 		offset1 = 0;
 		limit1 = 10;

@@ -27,7 +27,6 @@ public class EventEngine
 	public List<EVENT> generateEventList(int offset1, int limit1)
 	{		
 		StoredProcedureQuery sp = em.createNamedStoredProcedureQuery("Event.sp_getEvents");
-//		List<EVENT> eventList = Collections.checkedList(sp.setParameter("offset1", 1).setParameter("limit1", 10).getResultList(), EVENT.class);
 		List<EVENT> eventList = Collections.checkedList(sp.setParameter("offset1", offset1).setParameter("limit1", limit1).getResultList(), EVENT.class);
 		
 		if(eventList != null && eventList.size() > 0)
