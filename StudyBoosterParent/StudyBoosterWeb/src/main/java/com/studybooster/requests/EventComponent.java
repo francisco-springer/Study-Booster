@@ -1,10 +1,9 @@
 package com.studybooster.requests;
 
-import javax.inject.Inject;
+//import javax.inject.Inject;
 import javax.inject.Named;
 
-
-import com.studybooster.current.biz.EventEngine;
+//import com.studybooster.current.biz.EventEngine;
 import com.studybooster.entities.EVENT;
 
 import java.io.Serializable;
@@ -17,35 +16,53 @@ import com.studybooster.ejbs.EventEjb;;
 //@ManagedBean(name = "eventComponent")
 @Named("eventComponent")
 @RequestScoped
-public class EventComponent implements Serializable 
+public class EventComponent implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
 	private EventEjb eventEjb;
-	
-	private  List<EVENT> eventList;
 
-	private int eventListSize;
-	
-	public EventComponent(){}
-	
+	private List<EVENT> eventList;
+
+	private int offset1 = 0;
+	private int limit1 = 0;
+
+	public EventComponent()
+	{
+	}
+
 	@PostConstruct
 	public void CreateEventComponent()
 	{
-		eventList = eventEjb.getEventList();
-		// eventListSize = eventList.size();
+		offset1 = 0;
+		limit1 = 10;
+		
+		eventList = eventEjb.getEventList(offset1, limit1);
 	}
 
-	public List<EVENT> getEventList() 
+	public List<EVENT> getEventList()
 	{
 		return eventList;
 	}
 
-	public int getEventListSize()
+	public int getOffset1()
 	{
-		eventListSize = 10;
-		return eventListSize;
+		return offset1;
 	}
-	
+
+	public void setOffset1(int offset1)
+	{
+		this.offset1 = offset1;
+	}
+
+	public int getLimit1()
+	{
+		return limit1;
+	}
+
+	public void setLimit1(int limit1)
+	{
+		this.limit1 = limit1;
+	}
 }

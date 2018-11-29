@@ -21,8 +21,8 @@ public class EventEjb implements Serializable
 
 	public EventEjb(){}
 
-	public List<EVENT> getEventList()
+	public List<EVENT> getEventList(int offset1, int limit1)
 	{
-		return eventEngine.generateEventList();		
+		return eventEngine.generateEventList(offset1, limit1);		
 	}
 }

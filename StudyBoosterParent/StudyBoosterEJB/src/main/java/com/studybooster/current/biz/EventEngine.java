@@ -1,15 +1,15 @@
 package com.studybooster.current.biz;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+//import java.io.Serializable;
+//import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.inject.Inject;
+//import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+//import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
 
 // import com.studybooster.old.biz.EventOld;
@@ -22,23 +22,19 @@ public class EventEngine
 {
 	@PersistenceContext(unitName = "StudyBooster_PU")
 	private EntityManager em;
+		
 	
-	List<EVENT> eventList;
-	List<EVENT_TOPIC> eventTopicList;
-	
-	StoredProcedureQuery sp;
-	
-	@SuppressWarnings("unchecked")
-	public List<EVENT> generateEventList()
-	{
-		eventList = new ArrayList<EVENT>();
-
-		sp = em.createNamedStoredProcedureQuery("Event.sp_getEvents");
-		eventList = Collections.checkedList(sp.setParameter("offset1", 1).setParameter("limit1", 10).getResultList(), EVENT.class);
+	public List<EVENT> generateEventList(int offset1, int limit1)
+	{		
+		StoredProcedureQuery sp = em.createNamedStoredProcedureQuery("Event.sp_getEvents");
+//		List<EVENT> eventList = Collections.checkedList(sp.setParameter("offset1", 1).setParameter("limit1", 10).getResultList(), EVENT.class);
+		List<EVENT> eventList = Collections.checkedList(sp.setParameter("offset1", offset1).setParameter("limit1", limit1).getResultList(), EVENT.class);
 		
 		if(eventList != null && eventList.size() > 0)
 		{
-			int eventid;
+			List<EVENT_TOPIC> eventTopicList;
+			
+			int eventid = 0;
 			for(EVENT event : eventList)
 			{
 				eventid = event.getEventID();
@@ -52,11 +48,7 @@ public class EventEngine
 				}					
 			}
 		}
-		
-		
-		
-		// eventList.add(e);
-		
+
 		return eventList;
 	}
 }
