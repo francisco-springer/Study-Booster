@@ -32,8 +32,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_populate_user`(IN `numUserToCrea
     -- filter out the locations that are being used by an institution.
     insert into AvailableLocation_tmp(LocationID)
     select l.LocationID
-    from Location l
-    left join Institution i
+    from LOCATION l
+    left join INSTITUTION i
     	on l.LocationID = i.LocationID
     where i.LocationID is null; 
 
@@ -141,7 +141,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_populate_user`(IN `numUserToCrea
         from AvailableLocation_tmp a		
 		order by RAND() LIMIT 1;
                 
-        insert into User(Email, FName, LName, MainTelNum, SecondaryTelNum, Age, Gender, RegisteredDate, LastLog, LocationID)
+        insert into USER(Email, FName, LName, MainTelNum, SecondaryTelNum, Age, Gender, RegisteredDate, LastLog, LocationID)
         values(email,fname, lname, telnum1, telnum2, age, gender, registereddate, registereddate, tmpLocationID);
         
                               

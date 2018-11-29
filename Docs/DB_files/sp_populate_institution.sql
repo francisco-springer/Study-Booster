@@ -2,7 +2,7 @@ DROP PROCEDURE `sp_populate_institution`;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_populate_institution`(IN `numInstitutionToCreate` INT) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER BEGIN
 
  
-    declare InstitutionName varchar(50) default '';   
+    declare InstitutionName varchar(25) default '';   
     declare InstitutionCreatedDate date;   
     declare InstitutionCreateTime timestamp; 
     declare tmpDate datetime;
@@ -23,15 +23,15 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_populate_institution`(IN `numIns
 
         set tmpVAl = '';
 		set innerJLoop = 1;
-        set innerJLoopStop = 1 + floor(rand() * 49);
+        set innerJLoopStop = 5 + floor(rand() * 20);
         set tmpLocationID = -1;
         
         -- get a reandom location that is not being used by an institution.
-        select Location.LocationID into tmpLocationID 
-		from Location
-		left join Institution
-   			on Location.LocationID = Institution.LocationID
-		where Institution.LocationID is null
+        select LOCATION.LocationID into tmpLocationID 
+		from LOCATION
+		left join INSTITUTION
+   			on LOCATION.LocationID = INSTITUTION.LocationID
+		where INSTITUTION.LocationID is null
 		order by RAND() LIMIT 1;
         
 --         INSERT INTO SystemHistory(txt, desc1, historyDate)
@@ -61,13 +61,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_populate_institution`(IN `numIns
         	-- set InstitutionCreatedDate = DATE(tmpDate);  
             set InstitutionCreatedDate = tmpDate;
          
-        	Insert into Institution
-           		(Institution.LocationID, Institution.InstitutionName, Institution.InstitutionRegisteredDateTime)
+        	Insert into INSTITUTION
+           		(INSTITUTION.LocationID, INSTITUTION.InstitutionName, INSTITUTION.InstitutionRegisteredDateTime)
  			VALUES( tmpLocationID,      InstitutionName,             InstitutionCreatedDate                    );  
 	
         ELSE
                                                      
-         	INSERT INTO SystemHistory(txt, desc1, historyDate)
+         	INSERT INTO SYSTEM_HISTORY(txt, desc1, historyDate)
         	VALUES('Can not insert any more institutions since there are no more available location', 'need to insert more location rows if you want to insert more institution.', CURRENT_TIMESTAMP);
                                                      
        	end if;

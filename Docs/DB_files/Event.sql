@@ -33,7 +33,7 @@ CREATE TABLE `Event` (
   `EventName` varchar(50) NOT NULL,
   `EventDescription` varchar(50) NOT NULL,
   `EventDateTime` datetime NOT NULL,
-  `institutionID` int(10) UNSIGNED NOT NULL,
+  `InstitutionID` int(10) UNSIGNED NOT NULL,
   `EventCreator` varchar(50) NOT NULL,
   `GuessTotalCnt` smallint(4) NOT NULL,
   `EventPoolID` int(10) UNSIGNED NOT NULL
@@ -43,7 +43,7 @@ CREATE TABLE `Event` (
 -- Dumping data for table `Event`
 --
 
-INSERT INTO `Event` (`EventID`, `EventName`, `EventDescription`, `EventDateTime`, `institutionID`, `EventCreator`, `GuessTotalCnt`, `EventPoolID`) VALUES
+INSERT INTO `Event` (`EventID`, `EventName`, `EventDescription`, `EventDateTime`, `InstitutionID`, `EventCreator`, `GuessTotalCnt`, `EventPoolID`) VALUES
 (1173, 'SxHTB', 'ubSqc', '2015-08-13 01:22:40', 1357, 'uqxocwbqafzggqhqgk@wtfruy.jzt', 3, 829),
 (1174, 'GqIxodxgkGHuXJDNkHJzwKooB', 'NnVagGSyOBqVPmMeiBnHDTLaN', '2016-02-19 20:11:32', 1355, 'uqxocwbqafzggqhqgk@wtfruy.jzt', 12, 824),
 (1175, 'JCJOVqPgjAdOPJdlUUQzWqJEUMcVCbxmPwIfwVtepmoKNKmgQT', 'HqGmqRutLEMXGozJWMVvncypb', '2017-06-25 19:41:35', 1354, 'dhbjqezhpctkurzzvie@ihoyaeydx.dwx', 12, 822),
@@ -65,7 +65,7 @@ INSERT INTO `Event` (`EventID`, `EventName`, `EventDescription`, `EventDateTime`
 ALTER TABLE `Event`
   ADD PRIMARY KEY (`EventID`),
   ADD KEY `EventPoolID` (`EventPoolID`),
-  ADD KEY `institutionID` (`institutionID`),
+  ADD KEY `InstitutionID` (`InstitutionID`),
   ADD KEY `EventCreator` (`EventCreator`);
 
 --
@@ -86,7 +86,7 @@ ALTER TABLE `Event`
 -- Constraints for table `Event`
 --
 ALTER TABLE `Event`
-  ADD CONSTRAINT `Event_ibfk_2` FOREIGN KEY (`institutionID`) REFERENCES `Institution` (`InstitutionID`),
+  ADD CONSTRAINT `Event_ibfk_2` FOREIGN KEY (`InstitutionID`) REFERENCES `Institution` (`InstitutionID`),
   ADD CONSTRAINT `Event_ibfk_3` FOREIGN KEY (`EventCreator`) REFERENCES `User` (`Email`);
 COMMIT;
 

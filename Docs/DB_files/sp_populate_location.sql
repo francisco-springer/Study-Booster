@@ -22,7 +22,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_populate_location`(IN `numLocati
 
 
 	while jloop <= jloopStop DO
-
+    
+--   LocationLine1
         set tmpVAl = '';
 		set innerJLoop = 1;
         set innerJLoopStop = 5 + floor(rand() * 70);
@@ -33,7 +34,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_populate_location`(IN `numLocati
     	END WHILE;
           
         set LocationLine1 = tmpVAl;
-          
+        
+        --   LocationLine2
         SET tmpVAl = '';
 		set innerJLoop = 1;
         set innerJLoopStop = 5 + floor(rand() * 20);
@@ -44,7 +46,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_populate_location`(IN `numLocati
     	END WHILE;
          
         set LocationLine2 = tmpVAl;
-         
+        
+        --   LocationCity 
         set tmpVAl = '';
 		set innerJLoop = 1;
         set innerJLoopStop = 1 + floor(rand() * 49);
@@ -56,7 +59,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_populate_location`(IN `numLocati
          
          set LocationCity = tmpVAl;
                  
-         
+         --   LocationState
         set tmpVAl = '';
 		set innerJLoop = 1;
         set innerJLoopStop = 2;
@@ -70,7 +73,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_populate_location`(IN `numLocati
          
          set LocationZip = 10000 + floor(rand() * 89999);
          
-
+--   LocationIndications
         set tmpVAl = '';
 		set innerJLoop = 1;
         set innerJLoopStop = 1 + floor(rand() * 99);
@@ -84,7 +87,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_populate_location`(IN `numLocati
          
 		--  ,LocationLine2,LocationCity,LocationState,LocationZip,LocationIndications)  
                                                   
-        Insert into Location
+        Insert into LOCATION
            (LocationLine1, LocationLine2, LocationCity, LocationState, LocationZip, LocationIndications                     )
  		VALUES ( LocationLine1, LocationLine2, LocationCity, LocationState, LocationZip, LocationIndications   );  
 
