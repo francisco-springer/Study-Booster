@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2018 at 11:13 PM
+-- Generation Time: Nov 30, 2018 at 07:07 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.1.23
 
@@ -19,16 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `StudyBooster`
+-- Database: `StudyBooster2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `EventPayment`
+-- Table structure for table `EVENT_PAYMENT`
 --
 
-CREATE TABLE `EventPayment` (
+CREATE TABLE `EVENT_PAYMENT` (
   `EventPaymentID` int(10) UNSIGNED NOT NULL,
   `EventReservationID` int(10) UNSIGNED NOT NULL,
   `UserEmail` varchar(50) NOT NULL,
@@ -44,9 +44,9 @@ CREATE TABLE `EventPayment` (
 --
 
 --
--- Indexes for table `EventPayment`
+-- Indexes for table `EVENT_PAYMENT`
 --
-ALTER TABLE `EventPayment`
+ALTER TABLE `EVENT_PAYMENT`
   ADD PRIMARY KEY (`EventPaymentID`),
   ADD KEY `UserEmail` (`UserEmail`),
   ADD KEY `EventReservationID` (`EventReservationID`) USING BTREE;
@@ -56,9 +56,9 @@ ALTER TABLE `EventPayment`
 --
 
 --
--- AUTO_INCREMENT for table `EventPayment`
+-- AUTO_INCREMENT for table `EVENT_PAYMENT`
 --
-ALTER TABLE `EventPayment`
+ALTER TABLE `EVENT_PAYMENT`
   MODIFY `EventPaymentID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -66,11 +66,11 @@ ALTER TABLE `EventPayment`
 --
 
 --
--- Constraints for table `EventPayment`
+-- Constraints for table `EVENT_PAYMENT`
 --
-ALTER TABLE `EventPayment`
-  ADD CONSTRAINT `EventPayment_ibfk_1` FOREIGN KEY (`EventReservationID`) REFERENCES `EventReservation` (`EventReservationID`),
-  ADD CONSTRAINT `EventPayment_ibfk_2` FOREIGN KEY (`UserEmail`) REFERENCES `User` (`Email`);
+ALTER TABLE `EVENT_PAYMENT`
+  ADD CONSTRAINT `EVENT_PAYMENT_ibfk_1` FOREIGN KEY (`EventReservationID`) REFERENCES `EVENT_RESERVATION` (`EventReservationID`),
+  ADD CONSTRAINT `EVENT_PAYMENT_ibfk_2` FOREIGN KEY (`UserEmail`) REFERENCES `USER` (`Email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
