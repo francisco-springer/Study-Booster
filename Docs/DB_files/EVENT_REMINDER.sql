@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2018 at 11:14 PM
+-- Generation Time: Nov 30, 2018 at 07:08 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.1.23
 
@@ -19,16 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `StudyBooster`
+-- Database: `StudyBooster2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `EventReminder`
+-- Table structure for table `EVENT_REMINDER`
 --
 
-CREATE TABLE `EventReminder` (
+CREATE TABLE `EVENT_REMINDER` (
   `EventReminderID` int(10) UNSIGNED NOT NULL,
   `UserEmail` varchar(50) NOT NULL,
   `EventID` int(11) UNSIGNED NOT NULL,
@@ -41,9 +41,9 @@ CREATE TABLE `EventReminder` (
 --
 
 --
--- Indexes for table `EventReminder`
+-- Indexes for table `EVENT_REMINDER`
 --
-ALTER TABLE `EventReminder`
+ALTER TABLE `EVENT_REMINDER`
   ADD PRIMARY KEY (`EventReminderID`),
   ADD KEY `EventID` (`EventID`),
   ADD KEY `UserEmail` (`UserEmail`);
@@ -53,9 +53,9 @@ ALTER TABLE `EventReminder`
 --
 
 --
--- AUTO_INCREMENT for table `EventReminder`
+-- AUTO_INCREMENT for table `EVENT_REMINDER`
 --
-ALTER TABLE `EventReminder`
+ALTER TABLE `EVENT_REMINDER`
   MODIFY `EventReminderID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -63,11 +63,11 @@ ALTER TABLE `EventReminder`
 --
 
 --
--- Constraints for table `EventReminder`
+-- Constraints for table `EVENT_REMINDER`
 --
-ALTER TABLE `EventReminder`
-  ADD CONSTRAINT `EventReminder_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
-  ADD CONSTRAINT `EventReminder_ibfk_2` FOREIGN KEY (`UserEmail`) REFERENCES `User` (`Email`);
+ALTER TABLE `EVENT_REMINDER`
+  ADD CONSTRAINT `EVENT_REMINDER_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `EVENT` (`EventID`),
+  ADD CONSTRAINT `EVENT_REMINDER_ibfk_2` FOREIGN KEY (`UserEmail`) REFERENCES `USER` (`Email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
