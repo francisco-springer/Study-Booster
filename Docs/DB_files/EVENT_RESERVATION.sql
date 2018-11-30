@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2018 at 11:14 PM
+-- Generation Time: Nov 30, 2018 at 07:08 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.1.23
 
@@ -19,16 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `StudyBooster`
+-- Database: `StudyBooster2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `EventReservation`
+-- Table structure for table `EVENT_RESERVATION`
 --
 
-CREATE TABLE `EventReservation` (
+CREATE TABLE `EVENT_RESERVATION` (
   `EventReservationID` int(10) UNSIGNED NOT NULL,
   `GuessCnt` int(11) NOT NULL,
   `EventID` int(10) UNSIGNED NOT NULL,
@@ -41,9 +41,9 @@ CREATE TABLE `EventReservation` (
 --
 
 --
--- Indexes for table `EventReservation`
+-- Indexes for table `EVENT_RESERVATION`
 --
-ALTER TABLE `EventReservation`
+ALTER TABLE `EVENT_RESERVATION`
   ADD PRIMARY KEY (`EventReservationID`),
   ADD KEY `EventID` (`EventID`);
 
@@ -52,9 +52,9 @@ ALTER TABLE `EventReservation`
 --
 
 --
--- AUTO_INCREMENT for table `EventReservation`
+-- AUTO_INCREMENT for table `EVENT_RESERVATION`
 --
-ALTER TABLE `EventReservation`
+ALTER TABLE `EVENT_RESERVATION`
   MODIFY `EventReservationID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -62,10 +62,10 @@ ALTER TABLE `EventReservation`
 --
 
 --
--- Constraints for table `EventReservation`
+-- Constraints for table `EVENT_RESERVATION`
 --
-ALTER TABLE `EventReservation`
-  ADD CONSTRAINT `EventReservation_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`);
+ALTER TABLE `EVENT_RESERVATION`
+  ADD CONSTRAINT `EVENT_RESERVATION_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `EVENT` (`EventID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
