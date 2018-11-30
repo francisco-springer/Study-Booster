@@ -20,6 +20,11 @@
 		<org.richfaces.bom.version>4.3.3.Final</org.richfaces.bom.version>
 	</properties>
 
+	<modules>
+		<module>StudyBoosterWeb</module>
+	</modules>
+
+
 
 	<dependencyManagement>
 		<dependencies>
