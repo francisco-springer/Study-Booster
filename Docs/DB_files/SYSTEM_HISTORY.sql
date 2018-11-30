@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2018 at 11:14 PM
+-- Generation Time: Nov 30, 2018 at 07:13 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.1.23
 
@@ -19,16 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `StudyBooster`
+-- Database: `StudyBooster2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `SystemHistory`
+-- Table structure for table `SYSTEM_HISTORY`
 --
 
-CREATE TABLE `SystemHistory` (
+CREATE TABLE `SYSTEM_HISTORY` (
   `historyID` bigint(20) UNSIGNED NOT NULL,
   `txt` text NOT NULL,
   `desc1` text,
@@ -40,9 +40,9 @@ CREATE TABLE `SystemHistory` (
 --
 
 --
--- Indexes for table `SystemHistory`
+-- Indexes for table `SYSTEM_HISTORY`
 --
-ALTER TABLE `SystemHistory`
+ALTER TABLE `SYSTEM_HISTORY`
   ADD PRIMARY KEY (`historyID`);
 
 --
@@ -50,9 +50,9 @@ ALTER TABLE `SystemHistory`
 --
 
 --
--- AUTO_INCREMENT for table `SystemHistory`
+-- AUTO_INCREMENT for table `SYSTEM_HISTORY`
 --
-ALTER TABLE `SystemHistory`
+ALTER TABLE `SYSTEM_HISTORY`
   MODIFY `historyID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
